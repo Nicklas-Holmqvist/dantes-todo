@@ -4,15 +4,15 @@ const port = 3000
 
 const homeworks = [
     {
-        "Ämne": "Matte",
-        "Sidor": "15-18",
-        "Till": "210420",
+        "subject": "Matte",
+        "pages": "15-18",
+        "toDate": "210420",
         "id": 1
     },
     {
-        "Ämne": "Engelska",
-        "Sidor": "21-27",
-        "Till": "210421",
+        "subject": "Engelska",
+        "pages": "21-27",
+        "toDate": "210421",
         "id": 2
     }
 ]
@@ -40,16 +40,43 @@ app.get('/api/:id', (req, res) => {
     res.json(findHomework)
 })
 
-// Delete one lesson
-app.delete('/api/:id', (req, res) => {
-    const index = homeworks.find((homework) => {
-        if (homework.id == 1) {
-            return homework
+// Add a homework to the array
+app.post('/api', (req, res) => {
+
+    const homeworkToSave = req.body
+    
+    const subject = homeworkToSave.subject
+    const pages = homeworkToSave.pages
+    const toDate = homeworkToSave.toDate
+
+    let newId = 0
+    homeworks.forEach((i) => {
+        if(i.id > newId) {
+            newId = i.id
         }
     })
 
+    newId++
+
+    homeworks.push({
+        "subject": subject,
+        "pages": pages,
+        "toDate": toDate,
+        "id": newId
+    })
+
+})
+
+// Delete one lesson
+app.delete('/api/:id', (req, res) => {
+
+    const id = req.params.id
+
+    const index = homeworks.findIndex(homework => homework.id === id)
+
     const deleteHomework = homeworks.splice(index, 1);
     res.json(deleteHomework)
+    console.log(deleteHomework)
 })
 
 

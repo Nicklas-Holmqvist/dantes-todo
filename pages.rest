@@ -2,8 +2,20 @@ GET http://localhost:3000/api
 
 ###
 
-GET http://localhost:3000/api/1
+GET http://localhost:3000/api/4
 
 ###
 
-DELETE http://localhost:3000/api/1
+POST http://localhost:3000/api
+Content-Type: application/json
+
+    {
+        "subject": "Svenska",
+        "pages": "31-35",
+        "toDate": 210422
+    }
+
+###
+
+DELETE http://localhost:3000/api/2
+
