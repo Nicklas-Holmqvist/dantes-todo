@@ -22,9 +22,9 @@ Content-Type: application/json
 
     {
         "subject": "Svenska",
-        "pages": "60-65",
+        "pages": "60-68",
         "toDate": 210429,
-        "id": 6
+        "id": 3
     }
 
 ###
@@ -33,6 +33,6 @@ DELETE http://localhost:3000/api
 Content-Type: application/json
 
     {
-        "id": 6
+        "id": 1
     }
 

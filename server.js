@@ -78,29 +78,44 @@ app.post('/api', (req, res) => {
 })
 
 
-//TODO: Den tar det sista ID oavsett och ändrar
+//TODO: Den ändrar sista ID fast man inte ska gå vidare, ID 1 fungerar inte heller
 // Change a homework
 app.put('/api', (req, res) => {
 
     const id = req.body.id
 
-    const index = homeworks.findIndex(homework => homework.id === id)
-
-    if(!index == id) {
-        res.json("Hittade ingen läxa!")
-        res.end()
-    }else {
-
-        const deleteHomework = homeworks.splice(index, 1);
-        homeworks.push(req.body)
-        res.end()
+    newObject = {
+        "subject": req.body.subject,
+        "pages": req.body.pages,
+        "toDate": req.body.toDate,
+        "id": req.body.id
     }
 
 
+    const index = homeworks.findIndex(homework => homework.id === id)    
+
+    
+    console.log(index)
+   
+    // if(!index) {
+    //     res.json("Hittade ingen läxa!")
+    //     res.json(homeworks)
+    //     res.end()
+    // }else {
+
+        const deleteHomework = homeworks.splice(index, 1);
+        homeworks.push(newObject)
+        res.json(homeworks)
+        res.end()
+    // }
+
+    res.json(homeworks)
     res.end()
 
 })
 
+
+//TODO: Den ändrar sista ID fast man inte ska gå vidare, ID 1 fungerar inte heller
 // Delete one lesson
 app.delete('/api', (req, res) => {
 
@@ -108,13 +123,15 @@ app.delete('/api', (req, res) => {
 
     const index = homeworks.findIndex(homework => homework.id === id)
 
-    if(!index) {
-        res.json("Hittade ingen läxa!")
-        res.end()
-    }
 
+    // if(!index) {
+    //     res.json("Hittade ingen läxa!")
+    //     res.end()
+    // } else {
+    // }
     const deleteHomework = homeworks.splice(index, 1);
-    res.json(deleteHomework)
+
+    // res.json(deleteHomework)
     res.end()
 })
 
