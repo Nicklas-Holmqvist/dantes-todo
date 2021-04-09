@@ -61,7 +61,6 @@ app.post('/api', (req, res) => {
 
     newId++
 
-    // TODO: Får inte funktionen att köra efter jag kört PUT
     newObject = {
         "subject": subject,
         "pages": pages,
@@ -78,6 +77,8 @@ app.post('/api', (req, res) => {
 
 })
 
+
+//TODO: Den tar det sista ID oavsett och ändrar
 // Change a homework
 app.put('/api', (req, res) => {
 
@@ -85,15 +86,17 @@ app.put('/api', (req, res) => {
 
     const index = homeworks.findIndex(homework => homework.id === id)
 
-    if(!index) {
+    if(!index == id) {
         res.json("Hittade ingen läxa!")
+        res.end()
+    }else {
+
+        const deleteHomework = homeworks.splice(index, 1);
+        homeworks.push(req.body)
         res.end()
     }
 
-    const deleteHomework = homeworks.splice(index, 1);
 
-    homeworks.push(req.body)
-    res.json(deleteHomework)
     res.end()
 
 })
