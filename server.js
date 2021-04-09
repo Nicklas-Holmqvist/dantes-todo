@@ -23,6 +23,7 @@ app.use(express.json())
 //  Show all lessons
 app.get('/api', (req, res) => {
     res.json(homeworks)
+    res.end()
 })
 
 // Get one lesson
@@ -35,9 +36,11 @@ app.get('/api/:id', (req, res) => {
 
     if(!findHomework) {
         res.json("Hittade ingen läxa!")
+        res.end()
     }
 
     res.json(findHomework)
+    res.end()
 })
 
 // Add a homework to the array
@@ -58,25 +61,58 @@ app.post('/api', (req, res) => {
 
     newId++
 
-    homeworks.push({
+    // TODO: Får inte funktionen att köra efter jag kört PUT
+    newObject = {
         "subject": subject,
         "pages": pages,
         "toDate": toDate,
         "id": newId
-    })
+    }
+
+    homeworks.push(newObject)
+
+    console.log(homeworkToSave)    
+
+    res.json(homeworkToSave)
+    res.end()
+
+})
+
+// Change a homework
+app.put('/api', (req, res) => {
+
+    const id = req.body.id
+
+    const index = homeworks.findIndex(homework => homework.id === id)
+
+    if(!index) {
+        res.json("Hittade ingen läxa!")
+        res.end()
+    }
+
+    const deleteHomework = homeworks.splice(index, 1);
+
+    homeworks.push(req.body)
+    res.json(deleteHomework)
+    res.end()
 
 })
 
 // Delete one lesson
-app.delete('/api/:id', (req, res) => {
+app.delete('/api', (req, res) => {
 
-    const id = req.params.id
+    const id = req.body.id
 
     const index = homeworks.findIndex(homework => homework.id === id)
 
+    if(!index) {
+        res.json("Hittade ingen läxa!")
+        res.end()
+    }
+
     const deleteHomework = homeworks.splice(index, 1);
     res.json(deleteHomework)
-    console.log(deleteHomework)
+    res.end()
 })
 
 
