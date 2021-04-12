@@ -1,28 +1,14 @@
 const express = require('express')
+const data = require('./data/data.json')
 const app = express()
 const port = 3000
-
-const homeworks = [
-    {
-        "subject": "Matte",
-        "pages": "15-18",
-        "toDate": "210420",
-        "id": 1
-    },
-    {
-        "subject": "Engelska",
-        "pages": "21-27",
-        "toDate": "210421",
-        "id": 2
-    }
-]
 
 // Convert all to json
 app.use(express.json())
 
 //  Show all lessons
 app.get('/api', (req, res) => {
-    res.json(homeworks)
+    res.json(data)
     res.end()
 })
 
@@ -30,8 +16,8 @@ app.get('/api', (req, res) => {
 app.get('/api/:id', (req, res) => {
     const id = req.params.id
     
-    const findHomework = homeworks.find((homework) => {
-        return homework.id == id
+    const findHomework = data.find((data) => {
+        return data.id == id
     })
 
     if(!findHomework) {
@@ -54,7 +40,7 @@ app.post('/api', (req, res) => {
     const toDate = homeworkToSave.toDate
 
     let newId = 0
-    homeworks.forEach((i) => {
+    data.forEach((i) => {
         if(i.id > newId) {
             newId = i.id
         }
@@ -69,12 +55,11 @@ app.post('/api', (req, res) => {
         "id": newId
     }
 
-    homeworks.push(newObject)
+    data.push(newObject)
     res.end()
 
 })
 
-//TODO: Error header när tagit bort men fungerar
 // Change a homework
 app.put('/api/:id', (req, res) => {
 
@@ -105,7 +90,6 @@ app.put('/api/:id', (req, res) => {
 
 })
 
-//TODO: Error header när tagit bort men fungerar
 // Delete one lesson
 app.delete('/api/:id', (req, res) => {
 
