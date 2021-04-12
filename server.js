@@ -43,6 +43,7 @@ app.get('/api/:id', (req, res) => {
     res.end()
 })
 
+
 // Add a homework to the array
 app.post('/api', (req, res) => {
 
@@ -69,20 +70,17 @@ app.post('/api', (req, res) => {
     }
 
     homeworks.push(newObject)
-
-    console.log(homeworkToSave)    
-
-    res.json(homeworkToSave)
     res.end()
 
 })
 
-
-//TODO: Den ändrar sista ID fast man inte ska gå vidare, ID 1 fungerar inte heller
+//TODO: Error header när tagit bort men fungerar
 // Change a homework
-app.put('/api', (req, res) => {
+app.put('/api/:id', (req, res) => {
 
-    const id = req.body.id
+    const id = req.params.id
+
+    console.log(id)
 
     newObject = {
         "subject": req.body.subject,
@@ -91,47 +89,37 @@ app.put('/api', (req, res) => {
         "id": req.body.id
     }
 
-
-    const index = homeworks.findIndex(homework => homework.id === id)    
-
+    const index = homeworks.findIndex(homework => homework.id == id)   
     
-    console.log(index)
-   
-    // if(!index) {
-    //     res.json("Hittade ingen läxa!")
-    //     res.json(homeworks)
-    //     res.end()
-    // }else {
-
+    
+    if(index === -1) {        
+        res.json("Hitta inte läxan")
+        res.end()
+    } else {
         const deleteHomework = homeworks.splice(index, 1);
         homeworks.push(newObject)
-        res.json(homeworks)
         res.end()
-    // }
-
-    res.json(homeworks)
+        
+    }
     res.end()
 
 })
 
-
-//TODO: Den ändrar sista ID fast man inte ska gå vidare, ID 1 fungerar inte heller
+//TODO: Error header när tagit bort men fungerar
 // Delete one lesson
-app.delete('/api', (req, res) => {
+app.delete('/api/:id', (req, res) => {
 
-    const id = req.body.id
+    const id = req.params.id
 
-    const index = homeworks.findIndex(homework => homework.id === id)
+    const index = homeworks.findIndex(homework => homework.id == id)
 
+    if(index === -1) {
+        res.json("Inget att radera!")
+    } else {
+        const deleteHomework = homeworks.splice(index, 1);
+        res.end()
+    }
 
-    // if(!index) {
-    //     res.json("Hittade ingen läxa!")
-    //     res.end()
-    // } else {
-    // }
-    const deleteHomework = homeworks.splice(index, 1);
-
-    // res.json(deleteHomework)
     res.end()
 })
 
