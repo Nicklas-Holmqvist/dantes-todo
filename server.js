@@ -3,6 +3,9 @@ const data = require('./data/data.json')
 const app = express()
 const port = 3000
 
+// Serve the html-files
+app.use(express.static('public'))
+
 // Convert all to json
 app.use(express.json())
 
@@ -39,6 +42,10 @@ app.post('/api', (req, res) => {
     const pages = homeworkToSave.pages
     const toDate = homeworkToSave.toDate
 
+    console.log(subject)
+    console.log(pages)
+    console.log(toDate)
+
     let newId = 0
     data.forEach((i) => {
         if(i.id > newId) {
@@ -74,15 +81,14 @@ app.put('/api/:id', (req, res) => {
         "id": req.body.id
     }
 
-    const index = homeworks.findIndex(homework => homework.id == id)   
-    
+    const index = data.findIndex(homework => homework.id == id)      
     
     if(index === -1) {        
         res.json("Hitta inte läxan")
         res.end()
     } else {
-        const deleteHomework = homeworks.splice(index, 1);
-        homeworks.push(newObject)
+        const deleteHomework = data.splice(index, 1);
+        data.push(newObject)
         res.end()
         
     }
@@ -95,12 +101,15 @@ app.delete('/api/:id', (req, res) => {
 
     const id = req.params.id
 
-    const index = homeworks.findIndex(homework => homework.id == id)
+    const index = data.findIndex(homework => homework.id == id)
+
+    console.log(index)
+    console.log(data)
 
     if(index === -1) {
         res.json("Inget att radera!")
     } else {
-        const deleteHomework = homeworks.splice(index, 1);
+        const deleteHomework = data.splice(index, 1);
         res.end()
     }
 

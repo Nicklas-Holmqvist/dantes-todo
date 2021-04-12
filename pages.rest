@@ -2,7 +2,7 @@ GET http://localhost:3000/api
 
 ###
 
-GET http://localhost:3000/api/3
+GET http://localhost:3000/api/4
 
 ###
 
@@ -17,18 +17,18 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/api/3
+PUT http://localhost:3000/api/5
 Content-Type: application/json
 
     {
         "subject": "Svenska",
         "pages": "60-68",
         "toDate": 210429,
-        "id": 3
+        "id": 5
     }
 
 ###
 
-DELETE http://localhost:3000/api/5
+DELETE http://localhost:3000/api/2
 
 
