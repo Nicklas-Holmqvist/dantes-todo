@@ -42,6 +42,7 @@ app.post('/api', (req, res) => {
     const pages = homeworkToSave.pages
     const toDate = homeworkToSave.toDate
 
+    console.log(homeworkToSave)
     console.log(subject)
     console.log(pages)
     console.log(toDate)

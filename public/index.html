@@ -12,17 +12,18 @@
         <h1 class="title">Dantes Läxor</h1>
     </header>
     <div class="create-section">
-        <form action="/api" method="post">
+        <form class="form" id="myForm">
             <label for="subject">Ämne</label>
-            <input type="text" id="subject" name="subject">
+            <input type="text" id="subject" name="subject" value="Matte">
             <label for="pages">Antal sidor</label>
-            <input type="text" id="pages" name="pages">
+            <input type="text" id="pages" name="pages" value="10-15">
             <label for="toDate">Till datum</label>
-            <input type="date" id="toDate" name="toDate">
-            <button type="submit">Lägg till</button>
+            <input type="date" id="toDate" name="toDate" value="2021-04-25">
+            <button type="button" class="submit">Lägg till</button>
         </form>
     </div>
-    <div class="homework-list-section">
+    <div class="homework-list-section" id="dataList">
+        <p class="p"></p>
         <!-- Här kommer data matas ut i javascript -->
     </div>
 </body>
