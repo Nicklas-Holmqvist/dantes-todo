@@ -1,0 +1,35 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: none;
+}
+
+.flex {
+    display:flex;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.listStyling {
+    width: 20rem;
+}
+
+.textLeft {
+    text-align:left
+}
+
+.textRight {
+    text-align:right
+}
