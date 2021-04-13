@@ -29,8 +29,6 @@ function showData() {
     })
 }
 
-
-
 // Append homeworks to html-page
 function viewHomeworks(homeworksData) {
     const list = document.querySelector('#dataList')
@@ -44,20 +42,27 @@ function viewHomeworks(homeworksData) {
         list.appendChild(listContainer)
 
         // Datafield Subject
-        const subject = document.createElement("P");
-        subject.classList.add('textLeft')
-        subject.innerText = listItem.subject
+        const subject = document.createElement("input");
+        subject.classList.add('textLeft', 'subject')
+        subject.value = listItem.subject
+        subject.type = "text"
+        subject.name = "subject"
         listContainer.appendChild(subject)
 
         // Datafield Pages
-        const pages = document.createElement("P");
-        pages.innerText = listItem.pages
+        const pages = document.createElement("input");
+        pages.classList.add('pages')
+        pages.value = listItem.pages
+        pages.type = "text"
+        pages.name = "pages"
         listContainer.appendChild(pages)
 
         // Datafield toDate
-        const toDate = document.createElement("P");
-        toDate.classList.add('textRight')
-        toDate.innerText = listItem.toDate
+        const toDate = document.createElement("input");
+        toDate.classList.add('textRight', 'toDate')
+        toDate.value = listItem.toDate
+        toDate.type = "text"
+        toDate.name = "toDate"
         listContainer.appendChild(toDate)
 
         // Button Delete
@@ -73,23 +78,23 @@ function viewHomeworks(homeworksData) {
         listContainer.appendChild(btnUpdate)     
 
         btnDelete.addEventListener('click', (e) => {
-            console.log(listItem.id)
-            console.log(e)
             deleteHomework(listItem.id)
         })
 
         btnUpdate.addEventListener('click', (e) => {
-            console.log(listItem.id)
-            console.log(e)
+            const getId = listItem.id
+            const changeSubject = subject.value
+            const changePages = pages.value
+            const changeToDate = toDate.value
+
+            updateHomework(getId, changeSubject, changePages , changeToDate)
         })
     }    
 }
 
 function deleteHomework(e) {
-    console.log(e)
     const id = e
     const url = `/api/${id}`
-    console.log(url)
 
     const init = {
         method: 'delete'
@@ -101,6 +106,34 @@ function deleteHomework(e) {
         console.error(error)
     })
     
+}
+
+function updateHomework(getId, changeSubject, changePages , changeToDate) {
+    const id = getId
+    const url = `/api/${id}`
+
+
+    const subject = changeSubject
+    const pages = changePages
+    const toDate = changeToDate
+
+    const formData = {subject, id, pages, toDate}
+    console.log(formData)
+    console.log(id)
+
+    const init = {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }
+    fetch(url, init)
+    .then(function (res){
+        return res.text()
+    }).catch((error) => {
+        console.error(error)
+    })
 }
 
 function submits(e) {
