@@ -12,9 +12,6 @@ const formToDate = document.querySelector('#toDate')
 const myForm = document.querySelector('#myForm');
 const submit = document.querySelector('.submit');
 
-
-
-
 submit.addEventListener('click', submits)
 
 function showData() {
@@ -24,8 +21,7 @@ function showData() {
         return res.json()
     })
     .then(function (data) {
-        const homeworksData = data;        
-        console.log(homeworksData)
+        const homeworksData = data;    
         viewHomeworks(homeworksData)
         return homeworksData
     }).catch(function (err) {
@@ -98,13 +94,13 @@ function deleteHomework(e) {
     const init = {
         method: 'delete'
     }
-
     fetch(url, init)
     .then(function (res){
-        return res.json()
+        return res.text()
+    }).catch((error) => {
+        console.error(error)
     })
     
-    showData()
 }
 
 function submits(e) {
@@ -115,14 +111,6 @@ function submits(e) {
     const toDate = formToDate.value
 
     const formData = {subject, pages, toDate}
-    console.log(formData)
-    
-    // const formData = new FormData(this);
-    // const searchParams = new URLSearchParams()
-
-    // for(const pair of formData) {
-    //     searchParrams.append(pair[0], pair[1])
-    // }
 
     const options = {
         method: 'post',
