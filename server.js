@@ -35,6 +35,7 @@ app.get('/api/:id', (req, res) => {
 
 // Add a homework to the array
 app.post('/api', (req, res) => {
+    console.log(req.body)
 
     const homeworkToSave = req.body
     

@@ -79,32 +79,33 @@ function viewHomeworks(homeworksData) {
         btnDelete.addEventListener('click', (e) => {
             console.log(listItem.id)
             console.log(e)
+            deleteHomework(listItem.id)
         })
 
         btnUpdate.addEventListener('click', (e) => {
             console.log(listItem.id)
             console.log(e)
         })
-    }
-    
+    }    
 }
 
+function deleteHomework(e) {
+    console.log(e)
+    const id = e
+    const url = `/api/${id}`
+    console.log(url)
 
+    const init = {
+        method: 'delete'
+    }
 
-
-// const updateBtn = document.querySelector('.update')
-// updateBtn.addEventListener('click', (e) => {
-//     console.log(e)
-// })
-
-
-
-
-
-
-
-
-
+    fetch(url, init)
+    .then(function (res){
+        return res.json()
+    })
+    
+    showData()
+}
 
 function submits(e) {
     e.preventDefault();
@@ -123,6 +124,13 @@ function submits(e) {
     //     searchParrams.append(pair[0], pair[1])
     // }
 
+    const options = {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }
     
     fetch('http://localhost:3000/api', options
     ).then((response)=>{
