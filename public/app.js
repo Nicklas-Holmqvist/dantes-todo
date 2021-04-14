@@ -2,8 +2,8 @@ window.addEventListener('load', startProgram);
 
 function startProgram() {
     showData()
-
 }
+
 const p = document.querySelector('.p')
 const formSubject = document.querySelector('#subject')
 const formPages = document.querySelector('#pages')
@@ -11,27 +11,32 @@ const formToDate = document.querySelector('#toDate')
 
 const myForm = document.querySelector('#myForm');
 const submit = document.querySelector('.submit');
+const deleteAll = document.querySelector('.deleteAll');
+
+let homeworksData;
 
 
 submit.addEventListener('click', submits)
+deleteAll.addEventListener('click', deletingAll)
 
-function updateList() {
-    setInterval(showData, 500)
-}
+
 
 function showData() {
-    
     fetch('/api', {method: 'GET'})
     .then(function (res){
         return res.json()
     })
     .then(function (data) {
-        const homeworksData = data;    
+        homeworksData = data;    
         viewHomeworks(homeworksData)
         return homeworksData
     }).catch(function (err) {
         console.log(err)
     })
+}
+
+function updateList() {
+    showData()
 }
 
 // Append homeworks to html-page
@@ -173,4 +178,27 @@ function submits(e) {
     })
     
     updateList()
+}
+
+function deletingAll() {
+
+    const options = {
+        method: 'delete'
+    }
+
+    fetch('http://localhost:3000/api', options)
+    .then((response)=> {
+        return response.text();
+    }).then((text)=> {
+        console.log(text)
+    }).catch((error)=> {
+        console.log(error)
+    })
+
+    console.log(homeworksData)
+    if(homeworksData.length === 0){
+        return
+    } else {
+        updateList()
+    }
 }

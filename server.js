@@ -98,9 +98,6 @@ app.delete('/api/:id', (req, res) => {
 
     const index = data.findIndex(homework => homework.id == id)
 
-    console.log(index)
-    console.log(data)
-
     if(index === -1) {
         res.json("Inget att radera!")
     } else {
@@ -111,6 +108,13 @@ app.delete('/api/:id', (req, res) => {
     res.end()
 })
 
+// Delete one lesson
+app.delete('/api', (req, res) => {
+
+    data.splice(0, data.length)
+
+    res.end()
+})
 
 // Start server
 app.listen(port, (req, res) => {
