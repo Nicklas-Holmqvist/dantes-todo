@@ -2,6 +2,7 @@ window.addEventListener('load', startProgram);
 
 function startProgram() {
     showData()
+    // updateList()
 
 }
 const p = document.querySelector('.p')
@@ -12,7 +13,12 @@ const formToDate = document.querySelector('#toDate')
 const myForm = document.querySelector('#myForm');
 const submit = document.querySelector('.submit');
 
+
 submit.addEventListener('click', submits)
+
+function updateList() {
+    setInterval(showData, 500)
+}
 
 function showData() {
     
@@ -32,7 +38,7 @@ function showData() {
 // Append homeworks to html-page
 function viewHomeworks(homeworksData) {
     const list = document.querySelector('#dataList')
-    const homework = homeworksData
+    homework = homeworksData
 
     for (let i = 0; i <homework.length; i++) {
         const listItem = homework[i]
@@ -78,6 +84,7 @@ function viewHomeworks(homeworksData) {
         listContainer.appendChild(btnUpdate)     
 
         btnDelete.addEventListener('click', (e) => {
+            list.removeChild(listContainer)
             deleteHomework(listItem.id)
         })
 

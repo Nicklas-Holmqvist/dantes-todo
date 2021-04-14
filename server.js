@@ -43,11 +43,6 @@ app.post('/api', (req, res) => {
     const pages = homeworkToSave.pages
     const toDate = homeworkToSave.toDate
 
-    console.log(homeworkToSave)
-    console.log(subject)
-    console.log(pages)
-    console.log(toDate)
-
     let newId = 0
     data.forEach((i) => {
         if(i.id > newId) {
@@ -73,8 +68,6 @@ app.post('/api', (req, res) => {
 app.put('/api/:id', (req, res) => {
 
     const id = req.params.id
-
-    console.log(id)
 
     newObject = {
         "subject": req.body.subject,
