@@ -2,6 +2,7 @@ window.addEventListener('load', startProgram);
 
 function startProgram() {
     showData()
+    viewNearestHomework()
 }
 
 const p = document.querySelector('.p')
@@ -37,11 +38,30 @@ function showData() {
 
 function updateList() {
     showData()
+    viewNearestHomework()
+}
+
+function showClosest(closest) {
+    console.log(closest)
 }
 
 // Append one homework
 function viewNearestHomework() {
-    fetch('/url/')
+
+    const options = {
+        method: 'get'
+    }
+
+    fetch('/api/closest', options)
+    .then((res)=> {
+        return res.json()
+    }).then((data)=> {
+        closest = data
+        showClosest(closest)
+        return data
+    }).catch((err)=> {
+        console.log(err)
+    })    
 }
 
 // Append homeworks to html-page
