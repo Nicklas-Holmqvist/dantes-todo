@@ -83,17 +83,17 @@ function showClosest(closest) {
 
             const subject = document.createElement('p');
             subject.classList.add('closestSubject')
-            subject.innerText = listItem.subject
+            subject.innerText = 'Ämne: ' + listItem.subject
             listContainer.appendChild(subject)
 
             const pages = document.createElement('p');
-            pages.classList.add('closestSubject')
-            pages.innerText = listItem.pages
+            pages.classList.add('closestPages')
+            pages.innerText = 'Kapitel/Sidor: ' + listItem.pages
             listContainer.appendChild(pages)
 
             const toDates = document.createElement('p');
-            toDates.classList.add('closestSubject')
-            toDates.innerText = listItem.toDate
+            toDates.classList.add('closestDates')
+            toDates.innerText = 'Till datum: ' + listItem.toDate
             listContainer.appendChild(toDates)
         }
     } else {

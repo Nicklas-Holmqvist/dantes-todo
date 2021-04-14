@@ -1,0 +1,19 @@
+@media (max-width: 48em) {
+
+    body {
+        padding-bottom: 0
+    }
+
+    .main-section {
+        margin-top: 0;
+    }
+
+    .listStyling {
+        flex-direction: column;
+    }
+
+    .listStyling > input {
+        width: auto;
+    }
+
+}

@@ -2,7 +2,21 @@
     margin:0;
     padding:0;
     box-sizing: none;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.2rem;
+    
 }
+
+html {
+    height: 100%;
+    background: url(./assets/school-doodles-seamless-icons-background-free-vector-4116.jpg)
+}
+
+body {
+    padding-bottom: 4rem
+}
+
+
 
 .flex {
     display:flex;
@@ -26,14 +40,84 @@
     width: 100%;
 }
 
+.maxWidth {
+    max-width: 20rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .listStyling {
-    width: 20rem;
+    max-width: 50rem;
+    width: 100%;
 }
 
-.textLeft {
-    text-align:left
+.listStyling > input {
+    width: 8rem;
 }
 
-.textRight {
-    text-align:right
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 3rem;
 }
+
+h3 {
+    padding-top: 1rem;
+}
+
+p {
+    padding: 0.5rem 0.5rem
+}
+
+label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-top: .5rem
+}
+
+input {
+    border: none;
+    border-bottom: solid 2px black;
+    margin: 0.5rem .5rem;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+button {
+    padding: 0 .5rem;
+}
+
+.update {
+    margin-left: 0.4rem;
+}
+
+.main-section {
+    margin-top: 4rem;
+    max-width: 60rem;
+    width: 100%;
+    background: rgba(255,255,255, 0.8);
+    text-align: center;
+}
+
+.homework-list-section {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+
+.date {
+    margin-bottom: 1rem;
+}
+
+.submit {
+    margin-bottom: 1rem;
+}
+
+.lineBreak {
+    height: 2px;
+    width: 100%;
+    margin:1rem;
+    background: black;
+}
+
