@@ -2,7 +2,6 @@ window.addEventListener('load', startProgram);
 
 function startProgram() {
     showData()
-    // updateList()
 
 }
 const p = document.querySelector('.p')
@@ -39,6 +38,8 @@ function showData() {
 function viewHomeworks(homeworksData) {
     const list = document.querySelector('#dataList')
     homework = homeworksData
+
+    list.textContent = ""    
 
     for (let i = 0; i <homework.length; i++) {
         const listItem = homework[i]
@@ -141,6 +142,8 @@ function updateHomework(getId, changeSubject, changePages , changeToDate) {
     }).catch((error) => {
         console.error(error)
     })
+    
+    updateList()
 }
 
 function submits(e) {
@@ -168,4 +171,6 @@ function submits(e) {
     }).catch((error) => {
         console.log(error)
     })
+    
+    updateList()
 }
