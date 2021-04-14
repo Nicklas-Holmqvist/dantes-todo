@@ -39,6 +39,11 @@ function updateList() {
     showData()
 }
 
+// Append one homework
+function viewNearestHomework() {
+    fetch('/url/')
+}
+
 // Append homeworks to html-page
 function viewHomeworks(homeworksData) {
     const list = document.querySelector('#dataList')

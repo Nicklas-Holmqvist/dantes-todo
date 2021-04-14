@@ -2,7 +2,7 @@ GET http://localhost:3000/api
 
 ###
 
-GET http://localhost:3000/api/4
+GET http://localhost:3000/api/closest
 
 ###
 
@@ -12,7 +12,7 @@ Content-Type: application/json
     {
         "subject": "Historia",
         "pages": "Kapitel 6",
-        "toDate": 210425
+        "toDate": "2021-04-20"
     }
 
 ###
@@ -23,7 +23,7 @@ Content-Type: application/json
     {
         "subject": "Svenska",
         "pages": "60-68",
-        "toDate": 210429,
+        "toDate": "2021-04-29",
         "id": 5
     }
 

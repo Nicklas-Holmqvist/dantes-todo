@@ -15,23 +15,37 @@ app.get('/api', (req, res) => {
     res.end()
 })
 
-// Get one lesson
-app.get('/api/:id', (req, res) => {
-    const id = req.params.id
-    
-    const findHomework = data.find((data) => {
-        return data.id == id
+// Get the closest date
+app.get('/api/closest', (req, res) => {
+
+    if (data.length !== 0){
+    const getDates = data.slice(0)
+
+    const getDatesSorted = getDates.sort((a,b)=> {
+        return a.toDate - b.toDate
     })
 
-    if(!findHomework) {
-        res.json("Hittade ingen läxa!")
+    const getDate = getDatesSorted[0].toDate
+    
+    const getClosest = []
+
+    getDates.forEach((i) => {
+        if(i.toDate === getDate) {
+            getClosest.push({
+                subject: i.subject,
+                pages: i.pages,
+                toDate: i.toDate
+            })
+        } else {
+            return
+        }
+    })
+    res.json(getClosest)  
+    } else {
+        res.json("Finns inga läxor att visa")
         res.end()
     }
-
-    res.json(findHomework)
-    res.end()
 })
-
 
 // Add a homework to the array
 app.post('/api', (req, res) => {
