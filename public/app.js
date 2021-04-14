@@ -16,11 +16,8 @@ const deleteAll = document.querySelector('.deleteAll');
 
 let homeworksData;
 
-
 submit.addEventListener('click', submits)
 deleteAll.addEventListener('click', deletingAll)
-
-
 
 function showData() {
     fetch('/api', {method: 'GET'})
@@ -41,9 +38,7 @@ function updateList() {
     viewNearestHomework()
 }
 
-function showClosest(closest) {
-    console.log(closest)
-}
+
 
 // Append one homework
 function viewNearestHomework() {
@@ -56,12 +51,55 @@ function viewNearestHomework() {
     .then((res)=> {
         return res.json()
     }).then((data)=> {
-        closest = data
+        const closest = data
         showClosest(closest)
         return data
     }).catch((err)=> {
         console.log(err)
     })    
+}
+
+function showClosest(closest) {    
+    const list = document.querySelector('#dataItem')
+    const closestDates = closest
+
+    const noHomework = 'Finns inga läxor att visa'
+    if ( closestDates === noHomework){
+        list.textContent = ""
+        return
+    }
+    console.log(closestDates)
+
+    list.textContent = ""
+
+    if(closestDates.length !== 0) {
+
+        for (let i = 0; i < closestDates.length; i++) {
+            const listItem = closestDates[i]
+
+            const listContainer = document.createElement('div');
+            listContainer.classList.add('listStyling', 'flex', 'row', 'center');
+            list.appendChild(listContainer);
+
+            const subject = document.createElement('p');
+            subject.classList.add('closestSubject')
+            subject.innerText = listItem.subject
+            listContainer.appendChild(subject)
+
+            const pages = document.createElement('p');
+            pages.classList.add('closestSubject')
+            pages.innerText = listItem.pages
+            listContainer.appendChild(pages)
+
+            const toDates = document.createElement('p');
+            toDates.classList.add('closestSubject')
+            toDates.innerText = listItem.toDate
+            listContainer.appendChild(toDates)
+        }
+    } else {
+        return
+    }
+    
 }
 
 // Append homeworks to html-page
@@ -143,8 +181,11 @@ function deleteHomework(e) {
     }).catch((error) => {
         console.error(error)
     })
-    
+
+    updateList()    
 }
+
+
 
 function updateHomework(getId, changeSubject, changePages , changeToDate) {
     const id = getId
@@ -220,7 +261,6 @@ function deletingAll() {
         console.log(error)
     })
 
-    console.log(homeworksData)
     if(homeworksData.length === 0){
         return
     } else {

@@ -12,7 +12,7 @@ Content-Type: application/json
     {
         "subject": "Historia",
         "pages": "Kapitel 6",
-        "toDate": "2021-04-20"
+        "toDate": "2021-04-15"
     }
 
 ###

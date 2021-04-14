@@ -21,14 +21,20 @@ app.get('/api/closest', (req, res) => {
     if (data.length !== 0){
     const getDates = data.slice(0)
 
-    const getDatesSorted = getDates.sort((a,b)=> {
-        return a.toDate - b.toDate
+    const dates = []
+
+    getDates.forEach((i) =>{        
+        return dates.push({toDate: i.toDate})
     })
 
-    const getDate = getDatesSorted[0].toDate
-    
-    const getClosest = []
+    dates.sort((a,b) => (a.toDate > b.toDate ? 1 : -1))
 
+    console.log(dates)
+
+    const getDate = dates[0].toDate
+
+    const getClosest = []
+    
     getDates.forEach((i) => {
         if(i.toDate === getDate) {
             getClosest.push({
@@ -40,6 +46,7 @@ app.get('/api/closest', (req, res) => {
             return
         }
     })
+    console.log(getClosest)
     res.json(getClosest)  
     } else {
         res.json("Finns inga läxor att visa")
