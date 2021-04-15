@@ -63,7 +63,7 @@ function showClosest(closest) {
     const list = document.querySelector('#dataItem')
     const closestDates = closest
 
-    const noHomework = 'Finns inga läxor att visa'
+    const noHomework = 'No homeworks to view!'
     if ( closestDates === noHomework){
         list.textContent = ""
         return
@@ -108,6 +108,12 @@ function viewHomeworks(homeworksData) {
     homework = homeworksData
 
     list.textContent = ""    
+
+    noHomeworks = 'All homeworks is done!'
+
+    if(homework === noHomeworks) {
+        return
+    }
 
     for (let i = 0; i <homework.length; i++) {
         const listItem = homework[i]

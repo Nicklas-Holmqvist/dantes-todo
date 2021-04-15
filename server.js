@@ -11,30 +11,39 @@ app.use(express.json())
 
 //  Show all lessons
 app.get('/api', (req, res) => {
-    res.json(data)
-    res.end()
+
+    if(data.length !== 0) {
+        res.status(200).json(data)
+    } else {
+        res.status(404).json("All homeworks is done!")
+    }
 })
 
 // Get the closest date
 app.get('/api/closest', (req, res) => {
-
+    
+    // Does some magic to find the closest date in list
     if (data.length !== 0){
     const getDates = data.slice(0)
 
+    // Empty array that is populated by the "toDate" from the data
     const dates = []
 
+    // Finds all the toDates and push it to dates-array
     getDates.forEach((i) =>{        
         return dates.push({toDate: i.toDate})
     })
 
+    // Sorts the dates-array to the closest date
     dates.sort((a,b) => (a.toDate > b.toDate ? 1 : -1))
 
-    console.log(dates)
-
+    // Using the first value from dates-array
     const getDate = dates[0].toDate
 
+    // Empty array that populates with all the items with the closest toDate
     const getClosest = []
     
+    // Finds the closest toDate and push it to geClosest-array
     getDates.forEach((i) => {
         if(i.toDate === getDate) {
             getClosest.push({
@@ -46,17 +55,14 @@ app.get('/api/closest', (req, res) => {
             return
         }
     })
-    console.log(getClosest)
-    res.json(getClosest)  
+    res.status(200).json(getClosest)  
     } else {
-        res.json("Finns inga läxor att visa")
-        res.end()
+        res.status(404).json("No homeworks to view!")
     }
 })
 
 // Add a homework to the array
 app.post('/api', (req, res) => {
-    console.log(req.body)
 
     const homeworkToSave = req.body
     
@@ -81,8 +87,7 @@ app.post('/api', (req, res) => {
     }
 
     data.push(newObject)
-    res.end()
-
+    res.status(201).json('Homework has been added')
 })
 
 // Change a homework
@@ -94,22 +99,18 @@ app.put('/api/:id', (req, res) => {
         "subject": req.body.subject,
         "pages": req.body.pages,
         "toDate": req.body.toDate,
-        "id": req.body.id
+        "id": req.params.id
     }
 
     const index = data.findIndex(homework => homework.id == id)      
     
-    if(index === -1) {        
-        res.json("Hitta inte läxan")
-        res.end()
+    if(index === -1) {             
+        res.status(404).json("Can't find any homework with this ID")
     } else {
         const deleteHomework = data.splice(index, 1);
         data.push(newObject)
-        res.end()
-        
+        res.status(200).json("Homework has been updated")        
     }
-    res.end()
-
 })
 
 // Delete one lesson
@@ -120,21 +121,19 @@ app.delete('/api/:id', (req, res) => {
     const index = data.findIndex(homework => homework.id == id)
 
     if(index === -1) {
-        res.json("Inget att radera!")
+        res.status(404).json("Nothing has been deleted!")
     } else {
         const deleteHomework = data.splice(index, 1);
-        res.end()
+        res.status(200).json("Homework has been deleted!")
     }
-
-    res.end()
 })
 
-// Delete one lesson
+// Delete all lesson
 app.delete('/api', (req, res) => {
 
     data.splice(0, data.length)
 
-    res.end()
+    res.status(200).json('All lessons has been deleted!')
 })
 
 // Start server

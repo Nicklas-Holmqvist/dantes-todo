@@ -9,11 +9,13 @@
 
 html {
     height: 100%;
-    background: url(./assets/school-doodles-seamless-icons-background-free-vector-4116.jpg)
+    background: linear-gradient(0deg, rgba(255,255,255, 0.8), rgba(255,255,255, 0.8)) ,url(./assets/school-doodles-seamless-icons-background-free-vector-4116.jpg);
+    background-attachment: fixed;
+    
 }
 
 body {
-    padding-bottom: 4rem
+    padding-bottom: 4rem;
 }
 
 
@@ -82,6 +84,8 @@ input {
     margin: 0.5rem .5rem;
     text-align: center;
     font-size: 1.4rem;
+    background: none;
+    outline: none;
 }
 
 button {
@@ -98,6 +102,8 @@ button {
     width: 100%;
     background: rgba(255,255,255, 0.8);
     text-align: center;
+    
+    backdrop-filter: blur(5px);
 }
 
 .homework-list-section {

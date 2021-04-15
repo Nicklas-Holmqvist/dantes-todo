@@ -1,11 +1,14 @@
+// Shows every listitem
 GET http://localhost:3000/api
 
 ###
 
+// Shows the closest date for homeworks
 GET http://localhost:3000/api/closest
 
 ###
 
+// Add a item to the list
 POST http://localhost:3000/api
 Content-Type: application/json
 
@@ -17,22 +20,24 @@ Content-Type: application/json
 
 ###
 
+// Change an excisting item
 PUT http://localhost:3000/api/5
 Content-Type: application/json
 
     {
         "subject": "Svenska",
         "pages": "60-68",
-        "toDate": "2021-04-29",
-        "id": 5
+        "toDate": "2021-04-29"
     }
 
 ###
 
-DELETE http://localhost:3000/api/2
+// Deletes one item
+DELETE http://localhost:3000/api/10
 
 ###
 
+// Deletes all items
 DELETE http://localhost:3000/api
 
 
