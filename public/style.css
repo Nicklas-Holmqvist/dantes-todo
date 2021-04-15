@@ -12,10 +12,6 @@ html {
     background-attachment: fixed;
 }
 
-body {
-    padding-bottom: 4rem;
-}
-
 .flex {
     display:flex;
 }
@@ -50,13 +46,13 @@ body {
 }
 
 .listStyling > input {
-    width: 8rem;
+    width: 6rem;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
-    padding-top: 3rem;
+    padding-top: 2rem;
 }
 
 h3 {
@@ -64,11 +60,11 @@ h3 {
 }
 
 p {
-    padding: 0.5rem 0.5rem
+    padding: 0.2rem 0.2rem
 }
 
 label {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
     padding-top: .5rem
 }
@@ -78,32 +74,54 @@ input {
     border-bottom: solid 2px black;
     margin: 0.5rem .5rem;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1rem;
     background: none;
     outline: none;
 }
 
-button {
-    padding: 0 .5rem;
+.inputForm:focus {
+    background: none;
 }
+
+.inputForm:active {
+    background: none;
+}
+
+button {
+    padding: .2rem .5rem;
+    font-size: 1rem;
+    background: #FFB703;
+    color: white;
+    border-color: #FB8500;
+    border-radius: 5px;
+    transition: background .2s ease-in-out
+}
+
+button:hover {
+    background: #FB8500;
+    font-weight: bold;
+}
+
 
 .update {
     margin-left: 0.4rem;
 }
 
-.main-section {
-    margin-top: 4rem;
+.main-section {    
+    margin-top: 1rem;
+    padding-bottom: 2rem;
     max-width: 60rem;
     width: 100%;
     background: rgba(255,255,255, 0.8);
+    border-radius: 1rem;
     text-align: center;
     
     backdrop-filter: blur(5px);
 }
 
 .homework-list-section {
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 .date {
@@ -112,6 +130,12 @@ button {
 
 .submit {
     margin-bottom: 1rem;
+    width: 10rem;
+    font-weight: bold;
+}
+
+.deleteAll{
+    width: 10rem
 }
 
 .lineBreak {

@@ -8,12 +8,30 @@
         margin-top: 0;
     }
 
+    input {
+        width: 80%;
+        padding-bottom: 0.1rem;
+        font-size: 1.4rem;
+        border-bottom: solid 1px black;
+    }
+
     .listStyling {
         flex-direction: column;
+        padding-top: 1rem;
     }
 
     .listStyling > input {
-        width: auto;
+        width: 80%;
+        padding-bottom: 0.1rem;
+        font-size: 1.4rem;
+        border-bottom: solid 1px black;
+    }
+
+    
+    .btn {
+        width: 10rem;
+        padding: .2rem .5rem;
+        margin: .2rem 0;
     }
 
 }
