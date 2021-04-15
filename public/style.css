@@ -4,21 +4,17 @@
     box-sizing: none;
     font-family: 'Indie Flower', cursive;
     font-size: 1.2rem;
-    
 }
 
 html {
     height: 100%;
     background: linear-gradient(0deg, rgba(255,255,255, 0.8), rgba(255,255,255, 0.8)) ,url(./assets/school-doodles-seamless-icons-background-free-vector-4116.jpg);
     background-attachment: fixed;
-    
 }
 
 body {
     padding-bottom: 4rem;
 }
-
-
 
 .flex {
     display:flex;
@@ -56,7 +52,6 @@ body {
 .listStyling > input {
     width: 8rem;
 }
-
 
 h1 {
     font-size: 3rem;
@@ -111,7 +106,6 @@ button {
     padding-bottom: 4rem;
 }
 
-
 .date {
     margin-bottom: 1rem;
 }
@@ -126,4 +120,3 @@ button {
     margin:1rem;
     background: black;
 }
-

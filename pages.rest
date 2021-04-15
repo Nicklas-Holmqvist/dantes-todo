@@ -21,7 +21,7 @@ Content-Type: application/json
 ###
 
 // Change an excisting item
-PUT http://localhost:3000/api/5
+PUT http://localhost:3000/api/12
 Content-Type: application/json
 
     {
@@ -33,7 +33,7 @@ Content-Type: application/json
 ###
 
 // Deletes one item
-DELETE http://localhost:3000/api/10
+DELETE http://localhost:3000/api/5
 
 ###
 
