@@ -235,6 +235,11 @@ function viewNearestHomework() {
     }).catch((error) => {
         console.log(error)
     })
+
+    // Resets the formdata
+    formSubject.value = ""
+    formPages.value = ""
+    formToDate.value = ""
     
     updateList()
 }
