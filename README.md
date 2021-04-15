@@ -43,7 +43,7 @@ The focus of this school work was to getting started with API and backend. So th
 
 ## Install
 
-Open an empty folder in VSC and then run in the terminal: git clone https://github.com/Nicklas-Holmqvist/homework-todo.git.
+Open an empty folder in VSC and then run in the terminal: "git clone https://github.com/Nicklas-Holmqvist/homework-todo.git ./" .
 
 If you already have the folder, just open it in VSC
 
