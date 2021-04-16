@@ -12,6 +12,10 @@ html {
     background-attachment: fixed;
 }
 
+body {
+    padding-bottom: 1rem;
+}
+
 .flex {
     display:flex;
 }
@@ -46,7 +50,7 @@ html {
 }
 
 .listStyling > input {
-    width: 6rem;
+    width: 8rem;
 }
 
 h1 {
@@ -61,6 +65,10 @@ h3 {
 
 p {
     padding: 0.2rem 0.2rem
+}
+
+.all-p {
+    font-size: 1rem;
 }
 
 input:focus, input:active {
