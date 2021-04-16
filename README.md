@@ -56,14 +56,14 @@ If you already have the folder, just open it in VSC
 
 ## Visual
 
-The desktopview
+Desktopview
 
 ![visual-for-github-desktop](https://user-images.githubusercontent.com/70426543/114981856-e9ccf480-9e8e-11eb-8f60-b571aa4228d4.png)
 
-The tabletview
+Tabletview
 
 ![visual-for-github-tablet](https://user-images.githubusercontent.com/70426543/114981925-049f6900-9e8f-11eb-81d8-803f65106c84.png)
 
-The mobileview
+Mobileview
 
 ![visual-for-github-small](https://user-images.githubusercontent.com/70426543/114981959-108b2b00-9e8f-11eb-95c7-583a88aed11d.png)
