@@ -58,8 +58,12 @@ If you already have the folder, just open it in VSC
 
 The desktopview
 
-![visual-for-github-desktop JPG](https://user-images.githubusercontent.com/70426543/114865533-aa50ca80-9df2-11eb-96e8-bd50d2601e03.png)
+![visual-for-github-desktop](https://user-images.githubusercontent.com/70426543/114981856-e9ccf480-9e8e-11eb-8f60-b571aa4228d4.png)
+
+The tabletview
+
+![visual-for-github-tablet](https://user-images.githubusercontent.com/70426543/114981925-049f6900-9e8f-11eb-81d8-803f65106c84.png)
 
 The mobileview
 
-![visual-for-github-small](https://user-images.githubusercontent.com/70426543/114865528-a91f9d80-9df2-11eb-8f8a-d652d3a70f65.png)
+![visual-for-github-small](https://user-images.githubusercontent.com/70426543/114981959-108b2b00-9e8f-11eb-95c7-583a88aed11d.png)
