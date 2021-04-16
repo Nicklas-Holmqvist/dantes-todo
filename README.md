@@ -23,6 +23,8 @@ The focus of this school work was to getting started with API and backend. So th
 * The closest homeworks to do will be showned between add and the todo-list, this is not editable
 * Last, the todo-list. The three input fields are editable. You can ONLY edit one homwework at a time. The remove button deletes the homework.
 
+**If you want to reset the data, save the server.js in VSC and then update the browser**
+
 ## Requirement
 
 * 4 endpoints, GET, POST, PUT and DELETE + an extra GET - Check
@@ -41,7 +43,7 @@ The focus of this school work was to getting started with API and backend. So th
 
 ## Install
 
-Open an empty folder in VSC and then run in the terminal: git clone https://github.com/Nicklas-Holmqvist/homework-todo.git.
+Open an empty folder in VSC and then run in the terminal: "git clone https://github.com/Nicklas-Holmqvist/homework-todo.git ./" .
 
 If you already have the folder, just open it in VSC
 
