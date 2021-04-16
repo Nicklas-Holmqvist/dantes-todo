@@ -107,8 +107,10 @@ app.put('/api/:id', (req, res) => {
     if(index === -1) {             
         res.status(404).json("Can't find any homework with this ID")
     } else {
-        const deleteHomework = data.splice(index, 1);
-        data.push(newObject)
+        // Deletes the old homework
+        data.splice(index, 1);
+        // Pushes the new edited homework to the same index
+        data.splice(index, 0, newObject)
         res.status(200).json("Homework has been updated")        
     }
 })
